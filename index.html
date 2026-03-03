@@ -1,13 +1,56 @@
 <!DOCTYPE html>
-<html>
-    <title>Rock-Paper-Scissors</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
-    <head><h1>Rock Paper Scissors</h1></head>
-    <body>
-        <p>
-           <button type="submit">Rock</button>
-           <button type="submit">Scissors</button>
-           <button type="submit">Paper </button>
-        </p>
-    </body>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="score user-score">
+            You: <span id="userScore">0</span>
+        </div>
+
+        <div class="score computer-score">
+            Computer: <span id="computerScore">0</span>
+        </div>
+    </div>
+
+    <div class="game-area">
+
+        <div class="computer-panel">
+            <h2>Computer</h2>
+            <img id="computerImage" src="" alt="">
+            <p id="computerChoice"></p>
+        </div>
+
+        <div class="user-panel">
+            <h2>You</h2>
+
+            <div class="buttons">
+                <button class="btnrock" data-choice="rock">Rock</button>
+                <button class="btnpaper" data-choice="paper">Paper</button>
+                <button class="btnscissors" data-choice="scissors">Scissors</button>
+            </div>
+
+            <img id="userImage" src="" alt="">
+            <p id="userChoice"></p>
+        </div>
+
+    </div>
+
+
+    <div class="bottom-panel">
+        <p id="countdown"></p>
+        <p id="roundResult"></p>
+
+        <div id="finalResult" style="display: none;">
+            <h3 id="winnerText"></h3>
+            <button id="replayBtn">Replay</button>
+            <button id="bestOfFiveBtn">Best of 5</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
