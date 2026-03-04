@@ -4,6 +4,7 @@ let round=1;
 
 const choices=["rock", "paper","scissors"];
 
+const countdownEl = document.getElementById("countdown");
 const userScoreEl = document.getElementById("userScore");
 const computerScoreEl = document.getElementById("computerScore");
 const roundResult = document.getElementById("roundResult");
@@ -21,9 +22,29 @@ function getComputerChoice(){
 buttons.forEach(button=>{
     button.addEventListener("click",() =>{
         const userChoice=button.classList[1];
-        playRound(userChoice);
+        startCountdown(userChoice);
     });
 });
+
+function startCountdown(userChoice){
+    let count=3;
+    countdownEl.textContent=count;
+    buttons.forEach(button => button.disabled=true);
+    const interval=setInterval(() =>{
+        count--;
+        countdownEl.textContent=count;
+        if (count > 0) {
+            countdownEl.textContent = count;
+        } else {
+            clearInterval(interval);
+            countdownEl.textContent = "";
+
+            playRound(userChoice);
+
+            buttons.forEach(button => button.disabled = false);
+        }
+    },1000);
+}
 
 function playRound(userChoice){
     const computerChoice=getComputerChoice();
