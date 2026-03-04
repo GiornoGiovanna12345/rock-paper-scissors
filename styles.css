@@ -1,9 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    overflow: hidden;
+}
 body{
     background-color: black;
     color: white;
     margin:0;
-    height:100vh;
-    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .top-bar{
@@ -14,8 +19,8 @@ body{
 }
 
 .game-area {
+    flex: 1;
     display: flex;
-    height: calc(100vh - 100px); 
 }
 .computer-panel{
     border-right: 1px solid rgba(255,255,255,0.1);
@@ -60,9 +65,11 @@ body{
 
 .paper:hover,.scissors:hover{
     transform: scale(1.12);
+    cursor: pointer;
 }
 .rock:hover{
     transform: translateX(-50%) scale(1.12);
+    cursor: pointer;
 }
 .rock{
     top: 0;
@@ -78,4 +85,24 @@ body{
 .paper{
     bottom: 0;
     left: 0;
+}
+
+.bottom-panel{
+    text-align: center;
+    padding: 20px;
+}
+
+.game-wrapper{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#countdown{
+    font-size: 24px;
+    padding: 20px;
+}
+
+#resultMessage{
+    font-size: 20px;
+    margin-top: 10px;
 }
