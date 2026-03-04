@@ -8,6 +8,8 @@ const userScoreEl = document.getElementById("userScore");
 const computerScoreEl = document.getElementById("computerScore");
 const roundResult = document.getElementById("roundResult");
 const roundDisplay = document.getElementById("roundDisplay");
+const userChoiceText = document.getElementById("userChoice");
+const computerChoiceText = document.getElementById("computerChoice");
 
 const buttons=document.querySelectorAll(".btn");
 
@@ -25,6 +27,9 @@ buttons.forEach(button=>{
 
 function playRound(userChoice){
     const computerChoice=getComputerChoice();
+    userChoiceText.textContent = "You chose: " + userChoice;
+    computerChoiceText.textContent = "Computer chose: " + computerChoice;
+
     let result="";
 
     if(userChoice===computerChoice){
