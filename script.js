@@ -11,6 +11,10 @@ const roundResult = document.getElementById("roundResult");
 const roundDisplay = document.getElementById("roundDisplay");
 const userChoiceText = document.getElementById("userChoice");
 const computerChoiceText = document.getElementById("computerChoice");
+const buttonsDiv=document.querySelector(".buttons");
+const userEmoji=document.getElementById("userEmoji");
+const computerEmoji=document.getElementById("computerEmoji");
+const nextRoundBtn=document.getElementById("nextRoundBtn");
 
 const buttons=document.querySelectorAll(".btn");
 
@@ -18,6 +22,12 @@ function getComputerChoice(){
     const randomIndex=Math.floor(Math.random()*3);
     return choices[randomIndex];
 }
+
+const emojiMap={
+    rock: "🪨",
+    paper: "📄",
+    scissors: "✂️"
+};
 
 buttons.forEach(button=>{
     button.addEventListener("click",() =>{
@@ -29,10 +39,8 @@ buttons.forEach(button=>{
 function startCountdown(userChoice){
     let count=3;
     countdownEl.textContent=count;
-    buttons.forEach(button => button.disabled=true);
     const interval=setInterval(() =>{
         count--;
-        countdownEl.textContent=count;
         if (count > 0) {
             countdownEl.textContent = count;
         } else {
@@ -40,17 +48,19 @@ function startCountdown(userChoice){
             countdownEl.textContent = "";
 
             playRound(userChoice);
-
-            buttons.forEach(button => button.disabled = false);
         }
-    },1000);
+    },500);
+    buttonsDiv.classList.add("hidden");
+    userEmoji.textContent="";
+    computerEmoji.textContent="";
 }
 
 function playRound(userChoice){
     const computerChoice=getComputerChoice();
     userChoiceText.textContent = "You chose: " + userChoice;
     computerChoiceText.textContent = "Computer chose: " + computerChoice;
-
+    userEmoji.textContent=emojiMap[userChoice];
+    computerEmoji.textContent=emojiMap[computerChoice];
     let result="";
 
     if(userChoice===computerChoice){
@@ -62,21 +72,33 @@ function playRound(userChoice){
     ){
         result="You Win!";
         userScore++;
+        round++;
     }else{
         result="Computer Wins!";
         computerScore++;
+        round++;
     }
 
     roundResult.textContent=result;
-    console.log("Result element:", roundResult);
     updateUI();
+    nextRoundBtn.classList.remove("hidden");
 }
+
+nextRoundBtn.addEventListener("click", () => {
+    nextRoundBtn.classList.add("hidden");
+    userEmoji.textContent = "";
+    computerEmoji.textContent = "";
+    userChoiceText.textContent = "";
+    computerChoiceText.textContent = "";
+    roundResult.textContent = "";
+    buttonsDiv.classList.remove("hidden");
+});
 
 function updateUI() {
     userScoreEl.textContent = userScore;
     computerScoreEl.textContent = computerScore;
 
     roundDisplay.textContent = "Round: " + round;
-    round++;
 }
+
 

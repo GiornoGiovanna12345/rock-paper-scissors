@@ -22,7 +22,7 @@
 
         <div class="computer-panel">
             <h2>Computer</h2>
-            <img id="computerImage" src="" alt="">
+            <div id="computerEmoji" class="choice-emoji"></div>
             <p id="computerChoice"></p>
         </div>
 
@@ -30,12 +30,12 @@
             <h2>You</h2>
 
             <div class="buttons">
-                <button class="btn rock"><i class="fa-solid fa-hand-back-fist"></i></button>
-                <button class="btn paper"><i class="fa-solid fa-hand"></i></button>
-                <button class="btn scissors"><i class="fa-solid fa-hand-scissors"></i></button>
+                <button class="btn rock">🪨</button>
+                <button class="btn paper">📄</button>   
+                <button class="btn scissors">✂️</button>
             </div>
 
-            <img id="userImage" src="" alt="">
+            <div id="userEmoji" class="choice-emoji"></div>
             <p id="userChoice"></p>
         </div>
 
@@ -44,8 +44,9 @@
 
     <div class="bottom-panel">
         <p id="roundDisplay">Round: 1</p>
-        <p id="countdown">3</p>
+        <p id="countdown"></p>
         <p id="roundResult"></p>
+        <button id="nextRoundBtn" class="nextRoundBtn hidden" >Next Round</button>
 
         <div id="finalResult" style="display: none;">
             <h3 id="winnerText"></h3>
