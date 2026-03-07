@@ -23,8 +23,8 @@ body{
     display: flex;
     min-height: 0;
 }
-.computer-panel{
-    border-right: 1px solid rgba(255,255,255,0.1);
+.computer-panel {
+    border-right: 2px solid rgba(255,255,255,0.1);
 }
 .computer-panel,
 .user-panel {
@@ -34,18 +34,14 @@ body{
     align-items: center;
     padding-top: 60px;
 }
-.buttons{
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 50px auto;
-}
+
 .btn{
     position:absolute;
     width:75px;
     height:75px;
     border-radius: 100%;
-    border-color: rgb(41, 129, 100);
+    color:black;
+    border: 2px rgb(41, 129, 100) solid;
     font-size: 28px;
     transition: transform 0.2s ease;
     background-color: rgba(45, 141, 94, 0.72);
@@ -95,6 +91,12 @@ body{
     min-height: 70px;   
 }
 
+#roundDisplay {
+    font-size: 18px;
+    margin: 0;
+    align-self: center;
+}
+
 #roundResult{
     font-size: 22px;
     margin-top: 5px;
@@ -113,17 +115,56 @@ body{
     display: none;
 }
 
-.nextRoundBtn{
-    width:130px;
-    height:40px;
-    border-radius: 30px;
-    font-weight:bold;
-    background-color:rgba(45, 141, 94, 0.72);
-    transition: 0.2s ease;
-    margin-top: 10px;
-    cursor: pointer;
+.buttons {
+    position: absolute;
+    inset: 0;
 }
 
-.nextRoundBtn:hover{
-    transform: scale(1.15);
+.buttons-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
+    align-self: center;
+}
+
+#computerEmoji {
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
+    font-size: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#userEmoji {
+    position: absolute;
+    inset: 0;
+    font-size: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+#nextRoundBtn {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 80px;
+    border-radius: 30px;
+    font-size: 22px;
+    background-color: rgba(45, 141, 94, 0.72);
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    color: white;
+    z-index: 10;
+}
+
+#nextRoundBtn:hover {
+    transform: translate(-50%, -50%) scale(1.15);
 }

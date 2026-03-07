@@ -39,20 +39,27 @@ buttons.forEach(button=>{
 function startCountdown(userChoice){
     let count=3;
     countdownEl.textContent=count;
+    buttonsDiv.classList.add("hidden");
+    userEmoji.textContent="";
+    computerEmoji.textContent="";
+
+    let dots = 0;
+    const thinkingInterval = setInterval(() => {
+        dots = (dots % 3) + 1;
+        computerEmoji.textContent = ".".repeat(dots);
+    }, 300);
+
     const interval=setInterval(() =>{
         count--;
         if (count > 0) {
             countdownEl.textContent = count;
         } else {
             clearInterval(interval);
+            clearInterval(thinkingInterval);
             countdownEl.textContent = "";
-
             playRound(userChoice);
         }
-    },500);
-    buttonsDiv.classList.add("hidden");
-    userEmoji.textContent="";
-    computerEmoji.textContent="";
+    },1000);
 }
 
 function playRound(userChoice){

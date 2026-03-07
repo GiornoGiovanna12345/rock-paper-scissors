@@ -4,56 +4,55 @@
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="game-wrapper">
-    <div class="top-bar">
-        <div class="score computer-score">
-            Computer: <span id="computerScore">0</span>
+
+        <div class="top-bar">
+            <div class="score computer-score">
+                Computer Score: <span id="computerScore">0</span>
+            </div>
+            <p id="roundDisplay">Round: 1</p>
+            <div class="score user-score">
+                Your Score: <span id="userScore">0</span>
+            </div>
         </div>
 
-        <div class="score user-score">
-            You: <span id="userScore">0</span>
-        </div>
-    </div>
+        <button id="nextRoundBtn" class="hidden">Next Round</button>
 
-    <div class="game-area">
+        <div class="game-area">
 
-        <div class="computer-panel">
-            <h2>Computer</h2>
-            <div id="computerEmoji" class="choice-emoji"></div>
-            <p id="computerChoice"></p>
-        </div>
-
-        <div class="user-panel">
-            <h2>You</h2>
-
-            <div class="buttons">
-                <button class="btn rock">🪨</button>
-                <button class="btn paper">📄</button>   
-                <button class="btn scissors">✂️</button>
+            <div class="computer-panel">
+                <h2>Computer</h2>
+                <div id="computerEmoji">?</div>
+                <p id="computerChoice"></p>
             </div>
 
-            <div id="userEmoji" class="choice-emoji"></div>
-            <p id="userChoice"></p>
+            <div class="user-panel">
+                <h2>You</h2>
+                <div class="buttons-container">
+                    <div class="buttons">
+                        <button class="btn rock">🪨</button>
+                        <button class="btn paper">📄</button>
+                        <button class="btn scissors">✂️</button>
+                    </div>
+                    <div id="userEmoji" class="choice-emoji"></div>
+                </div>
+                <p id="userChoice"></p>
+            </div>
+
         </div>
 
-    </div>
-
-
-    <div class="bottom-panel">
-        <p id="roundDisplay">Round: 1</p>
-        <p id="countdown"></p>
-        <p id="roundResult"></p>
-        <button id="nextRoundBtn" class="nextRoundBtn hidden" >Next Round</button>
-
-        <div id="finalResult" style="display: none;">
-            <h3 id="winnerText"></h3>
-            <button id="replayBtn">Replay</button>
-            <button id="bestOfFiveBtn">Best of 5</button>
+        <div class="bottom-panel">
+            <p id="countdown"></p>
+            <p id="roundResult"></p>
+            <div id="finalResult" style="display: none;">
+                <h3 id="winnerText"></h3>
+                <button id="replayBtn">Replay</button>
+                <button id="bestOfFiveBtn">Best of 5</button>
+            </div>
         </div>
-    </div>
+
     </div>
     <script src="script.js"></script>
 </body>
