@@ -1,8 +1,8 @@
-let userScore=0;
-let computerScore=0;
-let round=1;
+let userScore = 0;
+let computerScore = 0;
+let round = 1;
 
-const choices=["rock", "paper","scissors"];
+const choices = ["rock", "paper", "scissors"];
 
 const countdownEl = document.getElementById("countdown");
 const userScoreEl = document.getElementById("userScore");
@@ -11,37 +11,37 @@ const roundResult = document.getElementById("roundResult");
 const roundDisplay = document.getElementById("roundDisplay");
 const userChoiceText = document.getElementById("userChoice");
 const computerChoiceText = document.getElementById("computerChoice");
-const buttonsDiv=document.querySelector(".buttons");
-const userEmoji=document.getElementById("userEmoji");
-const computerEmoji=document.getElementById("computerEmoji");
-const nextRoundBtn=document.getElementById("nextRoundBtn");
+const buttonsDiv = document.querySelector(".buttons");
+const userEmoji = document.getElementById("userEmoji");
+const computerEmoji = document.getElementById("computerEmoji");
+const nextRoundBtn = document.getElementById("nextRoundBtn");
 
-const buttons=document.querySelectorAll(".btn");
+const buttons = document.querySelectorAll(".btn");
 
-function getComputerChoice(){
-    const randomIndex=Math.floor(Math.random()*3);
-    return choices[randomIndex];
-}
-
-const emojiMap={
+const emojiMap = {
     rock: "🪨",
     paper: "📄",
     scissors: "✂️"
 };
 
-buttons.forEach(button=>{
-    button.addEventListener("click",() =>{
-        const userChoice=button.classList[1];
+function getComputerChoice() {
+    const randomIndex = Math.floor(Math.random() * 3);
+    return choices[randomIndex];
+}
+
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        const userChoice = button.classList[1];
         startCountdown(userChoice);
     });
 });
 
-function startCountdown(userChoice){
-    let count=3;
-    countdownEl.textContent=count;
+function startCountdown(userChoice) {
+    let count = 3;
+    countdownEl.textContent = count;
     buttonsDiv.classList.add("hidden");
-    userEmoji.textContent="";
-    computerEmoji.textContent="";
+    userEmoji.textContent = "";
+    computerEmoji.textContent = "";
 
     let dots = 0;
     const thinkingInterval = setInterval(() => {
@@ -49,7 +49,7 @@ function startCountdown(userChoice){
         computerEmoji.textContent = ".".repeat(dots);
     }, 300);
 
-    const interval=setInterval(() =>{
+    const interval = setInterval(() => {
         count--;
         if (count > 0) {
             countdownEl.textContent = count;
@@ -59,53 +59,55 @@ function startCountdown(userChoice){
             countdownEl.textContent = "";
             playRound(userChoice);
         }
-    },1000);
+    }, 1000);
 }
 
-function playRound(userChoice){
-    const computerChoice=getComputerChoice();
+function playRound(userChoice) {
+    const computerChoice = getComputerChoice();
     userChoiceText.textContent = "You chose: " + userChoice;
     computerChoiceText.textContent = "Computer chose: " + computerChoice;
-    userEmoji.textContent=emojiMap[userChoice];
-    computerEmoji.textContent=emojiMap[computerChoice];
-    let result="";
+    userEmoji.textContent = emojiMap[userChoice];
+    computerEmoji.textContent = emojiMap[computerChoice];
 
-    if(userChoice===computerChoice){
-        result="Draw";
-    }else if(
-        (userChoice==="rock" && computerChoice === "scissors")||
-        (userChoice==="scissors" && computerChoice === "paper")||
-        (userChoice==="paper" && computerChoice === "rock")
-    ){
-        result="You Win!";
+    let result = "";
+
+    if (userChoice === computerChoice) {
+        result = "DRAW";
+        roundResult.style.color="#968989";
+    } else if (
+        (userChoice === "rock" && computerChoice === "scissors") ||
+        (userChoice === "scissors" && computerChoice === "paper") ||
+        (userChoice === "paper" && computerChoice === "rock")
+    ) {
+        result = "YOU WIN!";
+        roundResult.style.color = "#2d8d5e";
         userScore++;
-        round++;
-    }else{
-        result="Computer Wins!";
+    } else {
+        result = "COMPUTER WINS!";
+        roundResult.style.color = "#c0392b";
         computerScore++;
-        round++;
     }
 
-    roundResult.textContent=result;
-    updateUI();
+    roundResult.textContent = result;
+    userScoreEl.textContent = userScore;
+    computerScoreEl.textContent = computerScore;
+
+    nextRoundBtn.textContent = (result === "Draw") ? "Play Again" : "Next Round";
     nextRoundBtn.classList.remove("hidden");
 }
 
 nextRoundBtn.addEventListener("click", () => {
+    if (nextRoundBtn.textContent === "Next Round") {
+        round++;
+    }
     nextRoundBtn.classList.add("hidden");
     userEmoji.textContent = "";
-    computerEmoji.textContent = "";
+    computerEmoji.textContent = "?";
     userChoiceText.textContent = "";
     computerChoiceText.textContent = "";
     roundResult.textContent = "";
     buttonsDiv.classList.remove("hidden");
-});
-
-function updateUI() {
-    userScoreEl.textContent = userScore;
-    computerScoreEl.textContent = computerScore;
-
     roundDisplay.textContent = "Round: " + round;
-}
+});
 
 
