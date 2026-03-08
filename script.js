@@ -60,7 +60,7 @@ function startCountdown(userChoice) {
             countdownEl.textContent = "";
             playRound(userChoice);
         }
-    }, 1000);
+    }, 800);
 }
 
 function playRound(userChoice) {
@@ -152,3 +152,11 @@ function resetGame(newMaxWins) {
     document.getElementById("finalResult").style.display = "none";
     buttonsDiv.classList.remove("hidden");
 }
+
+document.getElementById("startBtn").addEventListener("click", () => {
+    const intro = document.getElementById("introScreen");
+    intro.style.opacity = "0";
+    setTimeout(() => {
+        intro.style.display = "none";
+    }, 500);
+});
