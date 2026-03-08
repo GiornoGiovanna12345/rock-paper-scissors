@@ -3,7 +3,7 @@ choices=["rock","paper","scissors"]
 round_no=1
 user_score,comp_score=0,0
 
-while (user_score+comp_score)<3:
+while user_score < 2 and comp_score < 2:
     print("ROUND ",round_no)
     user_choice=input("Enter choice (Rock/Paper/Scissors): ")
     comp_index=random.randint(0,2)
@@ -24,12 +24,14 @@ while (user_score+comp_score)<3:
         else:
             print("Computer Win!")
             comp_score+=1
-        round+=1
+        round_no+=1
         print()
 print("User Score: ",user_score)
 print("Computer Score: ",comp_score)
-if(user_score>comp_score):
+if user_score > comp_score:
     print("User Won!")
-else:
+elif comp_score > user_score:
     print("Computer Won!")
+else:
+    print("It's a Draw!")
 

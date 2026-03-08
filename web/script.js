@@ -38,8 +38,6 @@ buttons.forEach(button => {
 });
 
 function startCountdown(userChoice) {
-    let count = 3;
-    countdownEl.textContent = count;
     buttonsDiv.classList.add("hidden");
     userEmoji.textContent = "";
     computerEmoji.textContent = "";
@@ -50,17 +48,10 @@ function startCountdown(userChoice) {
         computerEmoji.textContent = ".".repeat(dots);
     }, 300);
 
-    const interval = setInterval(() => {
-        count--;
-        if (count > 0) {
-            countdownEl.textContent = count;
-        } else {
-            clearInterval(interval);
-            clearInterval(thinkingInterval);
-            countdownEl.textContent = "";
-            playRound(userChoice);
-        }
-    }, 800);
+    setTimeout(() => {
+        clearInterval(thinkingInterval);
+        playRound(userChoice);
+    }, 2400)
 }
 
 function playRound(userChoice) {
@@ -74,20 +65,24 @@ function playRound(userChoice) {
 
     if (userChoice === computerChoice) {
         result = "DRAW";
-        roundResult.style.color="#968989";
+        roundResult.style.color = "#968989";
+        roundResult.style.textShadow = "0 0 15px #968989";
     } else if (
         (userChoice === "rock" && computerChoice === "scissors") ||
         (userChoice === "scissors" && computerChoice === "paper") ||
-        (userChoice === "paper" && computerChoice === "rock")
-    ) {
+        (userChoice === "paper" && computerChoice === "rock"))
+        {
         result = "YOU WIN!";
         roundResult.style.color = "#2d8d5e";
+        roundResult.style.textShadow = "0 0 15px #2d8d5e, 0 0 30px #2d8d5e";
         userScore++;
     } else {
         result = "COMPUTER WINS!";
         roundResult.style.color = "#c0392b";
+        roundResult.style.textShadow = "0 0 15px #c0392b, 0 0 30px #c0392b";
         computerScore++;
     }
+
     roundResult.textContent = result;
     userScoreEl.textContent = userScore;
     computerScoreEl.textContent = computerScore;
@@ -131,7 +126,7 @@ document.getElementById("bestOfFiveBtn").addEventListener("click", () => {
     buttonsDiv.classList.remove("hidden");
     roundResult.textContent = "";
     userEmoji.textContent = "";
-    computerEmoji.textContent = "?";
+    computerEmoji.textContent = "🤖";
     userChoiceText.textContent = "";
     computerChoiceText.textContent = "";
 });

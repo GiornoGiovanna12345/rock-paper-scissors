@@ -35,7 +35,7 @@ body{
     padding: 14px 40px;
     border-radius: 30px;
     border: none;
-    background-color:rgb(53, 84, 195);
+    background-color:rgb(1, 158, 158);
     color: white;
     font-size: 18px;
     font-family: 'Cinzel', serif;
@@ -45,7 +45,7 @@ body{
 
 #startBtn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px 5px rgb(93, 117, 207);
+    box-shadow: 0 0 15px 5px rgb(85, 165, 165);
 }
 
 .top-bar{
@@ -121,12 +121,6 @@ body{
     display: flex;
     flex-direction: column;
 }
-#countdown {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
-    min-height: 70px;   
-}
 
 #roundDisplay {
     font-size: 20px;
@@ -138,19 +132,18 @@ body{
     color:rgb(32, 61, 166);
 }
 
-#roundResult{
-    font-size: 22px;
+#roundResult {
+    font-size: 42px;
     font-weight: bold;
     margin-top: 5px;
     min-height: 30px;
+    transition: text-shadow 0.3s ease;
 }
 
-.choice-emoji {
-    font-size: 100px;
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.score{
+    font-family: 'Cinzel',serif;
+    color:rgb(1, 158, 158);
+    font-size: 20px;
 }
 
 .hidden {
@@ -199,18 +192,18 @@ body{
     height: 70px;
     border-radius: 50px;
     font-size: 22px;
-    background-color: rgb(19, 38, 104);
-    border: 2px solid black;
-    border: none;
+    font-weight: bold;
+    background-color: rgb(1, 158, 158);
+    border: 2px solid rgb(12, 30, 67);
     cursor: pointer;
     transition: 0.2s ease;
-    color: white;
+    color: black;
     z-index: 10;
 }
 
 #nextRoundBtn:hover {
     transform: translate(-50%, -50%) scale(1.15);
-    box-shadow: 0 0 15px 5px rgb(93, 117, 207);
+    box-shadow: 0 0 15px 5px rgb(82, 163, 163);
 }
 
 #finalResult {
@@ -246,12 +239,113 @@ body{
     cursor: pointer;
     font-weight: bold;
     font-size: 14px;
-    background-color: rgb(19, 38, 104);
+    background-color: rgb(35, 142, 142);
     color: white;
     transition: 0.2s ease;
 }
 
 #replayBtn:hover, #bestOfFiveBtn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px 5px rgb(93, 117, 207);
+    box-shadow: 0 0 15px 5px rgb(62, 138, 138);
+}
+
+@media (max-width: 600px) {
+    html, body {
+        overflow: auto;
+    }
+
+    .top-bar {
+        padding: 20px;
+        font-size: 14px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #roundDisplay {
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        order: -1;
+        margin-bottom: 5px;
+    }
+
+    .game-area {
+        flex-direction: column;
+    }
+
+    .computer-panel {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .computer-panel,
+    .user-panel {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    #computerEmoji {
+        width: 140px;
+        height: 140px;
+        margin-top: 20px;
+        font-size: 70px;
+    }
+
+    .buttons-container {
+        width: 140px;
+        height: 140px;
+        margin-top: 20px;
+    }
+
+    .btn {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+
+    .rock {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .scissors {
+        bottom: 5px;
+        right: 5px;
+    }
+
+    .paper {
+        bottom: 5px;
+        left: 5px;
+    }
+
+    #gameTitle {
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+
+    #rules {
+        padding: 16px 24px;
+        font-size: 13px;
+    }
+
+    #startBtn {
+        font-size: 14px;
+        padding: 10px 28px;
+    }
+
+    #roundResult {
+        font-size: 28px;
+    }
+
+    #nextRoundBtn {
+        width: 120px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    #finalResult {
+        width: 80vw;
+        padding: 30px 20px;
+    }
 }

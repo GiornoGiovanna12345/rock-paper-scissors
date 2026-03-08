@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪨</text></svg>">
 </head>
 <body>
     <div class="game-wrapper">
@@ -39,7 +41,7 @@
 
             <div class="computer-panel">
                 <h2>Computer</h2>
-                <div id="computerEmoji">choose</div>
+                <div id="computerEmoji">🤖</div>
                 <p id="computerChoice"></p>
             </div>
 
@@ -51,7 +53,7 @@
                         <button class="btn paper">📄</button>
                         <button class="btn scissors">✂️</button>
                     </div>
-                    <div id="userEmoji" class="choice-emoji"></div>
+                    <div id="userEmoji"></div>
                 </div>
                 <p id="userChoice"></p>
             </div>
@@ -59,7 +61,6 @@
         </div>
 
         <div class="bottom-panel">
-            <p id="countdown"></p>
             <p id="roundResult"></p>
         </div>
 
