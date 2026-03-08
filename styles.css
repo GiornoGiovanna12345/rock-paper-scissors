@@ -175,3 +175,46 @@ body{
     transform: translate(-50%, -50%) scale(1.15);
     box-shadow: 0 0 15px 5px rgb(93, 117, 207);
 }
+
+#finalResult {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 40px 60px;
+    text-align: center;
+    z-index: 20;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    animation: popIn 0.5s;
+}
+
+@keyframes popIn {
+    0% {transform: translate(-50%, -50%) scale(1.12);}
+    25% {transform: translate(-50%, -50%) scale(1.23);}
+    50% {transform: translate(-50%, -50%) scale(1.05);}
+    75% {transform: translate(-50%, -50%) scale(0.95);}
+    100% {transform: translate(-50%, -50%) scale(1);}
+}
+
+#replayBtn, #bestOfFiveBtn {
+    padding: 10px 24px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: rgb(19, 38, 104);
+    color: white;
+    transition: 0.2s ease;
+}
+
+#replayBtn:hover, #bestOfFiveBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px 5px rgb(93, 117, 207);
+}

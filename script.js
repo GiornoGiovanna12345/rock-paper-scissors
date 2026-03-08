@@ -1,6 +1,7 @@
 let userScore = 0;
 let computerScore = 0;
 let round = 1;
+let maxWins=2;
 
 const choices = ["rock", "paper", "scissors"];
 
@@ -87,13 +88,17 @@ function playRound(userChoice) {
         roundResult.style.color = "#c0392b";
         computerScore++;
     }
-
     roundResult.textContent = result;
     userScoreEl.textContent = userScore;
     computerScoreEl.textContent = computerScore;
 
-    nextRoundBtn.textContent = (result === "Draw") ? "Play Again" : "Next Round";
-    nextRoundBtn.classList.remove("hidden");
+    if(userScore === maxWins || computerScore === maxWins){
+        endGame();
+    }else{
+        nextRoundBtn.textContent = (result === "DRAW") ? "Play Again" : "Next Round";
+        nextRoundBtn.classList.remove("hidden");
+    }
+
 }
 
 nextRoundBtn.addEventListener("click", () => {
@@ -110,4 +115,40 @@ nextRoundBtn.addEventListener("click", () => {
     roundDisplay.textContent = "Round: " + round;
 });
 
+function endGame(){
+    const finalResult=document.getElementById("finalResult");
+    const winnerText=document.getElementById("winnerText");
+    winnerText.textContent=userScore === maxWins ? "You win the Game! 🎉":"Computer Wins the Game! 💀";
+    finalResult.style.display="flex";
+    buttonsDiv.classList.add("hidden");
+    document.getElementById("bestOfFiveBtn").style.display=maxWins === 3 ?"none":"inline-block";
+}
 
+document.getElementById("replayBtn").addEventListener("click", () => resetGame(2));
+document.getElementById("bestOfFiveBtn").addEventListener("click", () => {
+    maxWins = 3;
+    document.getElementById("finalResult").style.display = "none";
+    buttonsDiv.classList.remove("hidden");
+    roundResult.textContent = "";
+    userEmoji.textContent = "";
+    computerEmoji.textContent = "?";
+    userChoiceText.textContent = "";
+    computerChoiceText.textContent = "";
+});
+
+function resetGame(newMaxWins) {
+    maxWins = newMaxWins;
+    userScore = 0;
+    computerScore = 0;
+    round = 1;
+    userScoreEl.textContent = 0;
+    computerScoreEl.textContent = 0;
+    roundDisplay.textContent = "Round: 1";
+    roundResult.textContent = "";
+    userChoiceText.textContent = "";
+    computerChoiceText.textContent = "";
+    userEmoji.textContent = "";
+    computerEmoji.textContent = "?";
+    document.getElementById("finalResult").style.display = "none";
+    buttonsDiv.classList.remove("hidden");
+}
