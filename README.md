@@ -29,7 +29,7 @@ A browser-based Rock Paper Scissors game built with HTML, CSS and JavaScript.
 ## How to Run
 
 **Web version**
-Open `web/index.html` in your browser
+Open `docs/index.html` in your browser
 
 **CLI version**
 ```bash
