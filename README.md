@@ -3,7 +3,7 @@
 A browser-based Rock Paper Scissors game built with HTML, CSS and JavaScript.
 
 ## Live Demo
-[Play here] 
+[Play here] https://giornogiovanna12345.github.io/rock-paper-scissors/
 
 ## Versions
 - **Browser version** — HTML, CSS, JavaScript (this repo)
