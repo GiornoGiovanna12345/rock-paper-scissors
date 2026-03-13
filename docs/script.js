@@ -102,7 +102,7 @@ nextRoundBtn.addEventListener("click", () => {
     }
     nextRoundBtn.classList.add("hidden");
     userEmoji.textContent = "";
-    computerEmoji.textContent = "?";
+    computerEmoji.textContent = "🤖";
     userChoiceText.textContent = "";
     computerChoiceText.textContent = "";
     roundResult.textContent = "";
