@@ -143,7 +143,7 @@ function resetGame(newMaxWins) {
     userChoiceText.textContent = "";
     computerChoiceText.textContent = "";
     userEmoji.textContent = "";
-    computerEmoji.textContent = "?";
+    computerEmoji.textContent = "🤖";
     document.getElementById("finalResult").style.display = "none";
     buttonsDiv.classList.remove("hidden");
 }
