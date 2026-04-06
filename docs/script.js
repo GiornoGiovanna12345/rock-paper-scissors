@@ -26,8 +26,8 @@ const sounds = {
     smallLose: new Audio("sounds/smalllose.wav"),
     finalWin: new Audio("sounds/finalwin.wav"),
     finalLose: new Audio("sounds/finalloss.wav"),
-    reveal: new Audio("sounds/reveal.wav"),
-    neutral: new Audio("sounds/neutral.wav")
+    neutral: new Audio("sounds/neutral.wav"),
+    robot: new Audio("sounds/robot.wav")
 };
 
 function playSound(sound) {
@@ -55,6 +55,7 @@ buttons.forEach(button => {
 });
 
 function startCountdown(userChoice) {
+    playSound(sounds.robot);
     buttonsDiv.classList.add("hidden");
     userEmoji.textContent = "";
     computerEmoji.textContent = "";
@@ -72,7 +73,6 @@ function startCountdown(userChoice) {
 }
 
 function playRound(userChoice) {
-    playSound(sounds.reveal);
     const computerChoice = getComputerChoice();
     userChoiceText.textContent = "You chose: " + userChoice;
     computerChoiceText.textContent = "Computer chose: " + computerChoice;
@@ -85,7 +85,7 @@ function playRound(userChoice) {
         result = "DRAW";
         roundResult.style.color = "#968989";
         roundResult.style.textShadow = "0 0 15px #968989";
-        playSound(sounds.reveal);
+        playSound(sounds.neutral);
     } else if (
         (userChoice === "rock" && computerChoice === "scissors") ||
         (userChoice === "scissors" && computerChoice === "paper") ||
@@ -118,6 +118,7 @@ function playRound(userChoice) {
 }
 
 nextRoundBtn.addEventListener("click", () => {
+    playSound(sounds.start);
     if (nextRoundBtn.textContent === "Next Round") {
         round++;
     }
@@ -145,8 +146,13 @@ function endGame(){
     }
 }
 
-document.getElementById("replayBtn").addEventListener("click", () => resetGame(2));
+document.getElementById("replayBtn").addEventListener("click", () => {
+    playSound(sounds.start);
+    resetGame(2);
+});
+
 document.getElementById("bestOfFiveBtn").addEventListener("click", () => {
+    playSound(sounds.start);
     maxWins = 3;
     document.getElementById("finalResult").style.display = "none";
     buttonsDiv.classList.remove("hidden");
