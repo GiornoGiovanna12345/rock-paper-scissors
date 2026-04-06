@@ -19,6 +19,22 @@ const nextRoundBtn = document.getElementById("nextRoundBtn");
 
 const buttons = document.querySelectorAll(".btn");
 
+const sounds = {
+    start: new Audio("sounds/start.wav"),
+    button: new Audio("sounds/button.wav"),
+    smallWin: new Audio("sounds/smallwin.wav"),
+    smallLose: new Audio("sounds/smalllose.wav"),
+    finalWin: new Audio("sounds/finalwin.wav"),
+    finalLose: new Audio("sounds/finalloss.wav"),
+    reveal: new Audio("sounds/reveal.wav"),
+    neutral: new Audio("sounds/neutral.wav")
+};
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
+}
+
 const emojiMap = {
     rock: "🪨",
     paper: "📄",
@@ -32,6 +48,7 @@ function getComputerChoice() {
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
+        playSound(sounds.button);
         const userChoice = button.classList[1];
         startCountdown(userChoice);
     });
@@ -55,6 +72,7 @@ function startCountdown(userChoice) {
 }
 
 function playRound(userChoice) {
+    playSound(sounds.reveal);
     const computerChoice = getComputerChoice();
     userChoiceText.textContent = "You chose: " + userChoice;
     computerChoiceText.textContent = "Computer chose: " + computerChoice;
@@ -67,6 +85,7 @@ function playRound(userChoice) {
         result = "DRAW";
         roundResult.style.color = "#968989";
         roundResult.style.textShadow = "0 0 15px #968989";
+        playSound(sounds.reveal);
     } else if (
         (userChoice === "rock" && computerChoice === "scissors") ||
         (userChoice === "scissors" && computerChoice === "paper") ||
@@ -76,11 +95,13 @@ function playRound(userChoice) {
         roundResult.style.color = "#2d8d5e";
         roundResult.style.textShadow = "0 0 15px #2d8d5e, 0 0 30px #2d8d5e";
         userScore++;
+        playSound(sounds.smallWin);
     } else {
         result = "COMPUTER WINS!";
         roundResult.style.color = "#c0392b";
         roundResult.style.textShadow = "0 0 15px #c0392b, 0 0 30px #c0392b";
         computerScore++;
+        playSound(sounds.smallLose);
     }
 
     roundResult.textContent = result;
@@ -117,6 +138,11 @@ function endGame(){
     finalResult.style.display="flex";
     buttonsDiv.classList.add("hidden");
     document.getElementById("bestOfFiveBtn").style.display=maxWins === 3 ?"none":"inline-block";
+    if(userScore === maxWins){
+        playSound(sounds.finalWin);
+    } else {
+        playSound(sounds.finalLose);
+    }
 }
 
 document.getElementById("replayBtn").addEventListener("click", () => resetGame(2));
@@ -149,6 +175,7 @@ function resetGame(newMaxWins) {
 }
 
 document.getElementById("startBtn").addEventListener("click", () => {
+    playSound(sounds.start);
     const intro = document.getElementById("introScreen");
     intro.style.opacity = "0";
     setTimeout(() => {
