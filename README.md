@@ -1,37 +1,38 @@
 # Rock Paper Scissors 🪨📄✂️
 
-A browser-based Rock Paper Scissors game built with HTML, CSS and JavaScript.
+A browser-based Rock Paper Scissors game built with vanilla HTML, CSS and JavaScript.
 
-## Live Demo
-[Play here] https://giornogiovanna12345.github.io/rock-paper-scissors/
+## 🔗 Live Demo
+[Play here](https://giornogiovanna12345.github.io/rock-paper-scissors/)
 
-## Versions
+## 🕹️ Versions
 - **Browser version** — HTML, CSS, JavaScript (this repo)
-- **CLI version** — Python, playable in the terminal
+- **🐍 CLI version** — Python, playable in the terminal
 
-## Features
-- Intro screen with Rules
-- Animated 3 dots indicating the "thinking" while the computer decides
-- Colour coded round results with glow effect
-- Responsive for mobile and desktop
-- Best of 3 match that can be extended to Best of 5
+## ✨ Features
+- 🎬 Intro screen with rules
+- 🤖 Animated thinking dots while the computer decides
+- 🎨 Colour coded round results with glow effects
+- 📱 Responsive for mobile and desktop
+- 🏆 Best of 3 match with option to extend to Best of 5
+- 🔊 Sound effects throughout
 
-## How to Play
-1. Click your choice - Rock, Paper, Scissors
-2. First side to 2 wins, wins the match
-3. After the match, choose to Replay or extend to Best 3 out of 5
+## 🎮 How to Play
+1. 👆 Click your choice — Rock, Paper or Scissors
+2. 🥇 First to 2 wins takes the match
+3. 🔄 After the match, Replay or extend to Best of 5
 
-## Built With
+## 🛠️ Built With
 - HTML
-- CSS (Flexbox, animations, media queries)
-- JavaScript (DOM manipulation, game logic)
+- CSS — Flexbox, animations, media queries
+- JavaScript — DOM manipulation, game logic
 
-## How to Run
+## 🚀 How to Run
 
-**Web version**
-Open `docs/index.html` in your browser
+**🌐 Web version**
+Open `docs/index.html` in your browser — or play the [live demo](https://giornogiovanna12345.github.io/rock-paper-scissors/)
 
-**CLI version**
+**💻 CLI version**
 ```bash
 python cli/rps.py
 ```
