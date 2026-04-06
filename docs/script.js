@@ -64,12 +64,12 @@ function startCountdown(userChoice) {
     const thinkingInterval = setInterval(() => {
         dots = (dots % 3) + 1;
         computerEmoji.textContent = ".".repeat(dots);
-    }, 300);
+    }, 500);
 
     setTimeout(() => {
         clearInterval(thinkingInterval);
         playRound(userChoice);
-    }, 2400)
+    }, 3000)
 }
 
 function playRound(userChoice) {
